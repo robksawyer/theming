@@ -1,6 +1,8 @@
 import test from 'ava';
 import React, { Component } from 'react';
-import { mount } from 'enzyme';
+
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 import isFunction from 'is-function';
 import createThemeProvider from './create-theme-provider';
@@ -15,6 +17,10 @@ import {
   getInterceptor,
   mountOptions,
 } from './test-helpers';
+
+
+Enzyme.configure({ adapter: new Adapter() });
+
 
 test(`createThemeProvider's type`, t => {
   const actual = isFunction(createThemeProvider);
